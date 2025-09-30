@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Storage;
 <div class="row">
     <div class="col-md-6">
         @if($product->image)
-            <img src="{{ asset('storage/' . $product->image) }}" class="img-fluid rounded" alt="{{ $product->name }}" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAwIiBoZWlnaHQ9IjQwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjZjhmOWZhIi8+PHRleHQgeD0iNTAlIiB5PSI1MCUiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSIxOCIgZmlsbD0iIzk5OTk5OSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZHk9Ii4zZW0iPuS4u+iDveaaguaXoDwvdGV4dD48L3N2Zz4='">
+            <img src="{{ asset('uploads/products/' . $product->image) }}" class="img-fluid rounded" alt="{{ $product->name }}">
         @else
             <div class="bg-light rounded d-flex align-items-center justify-content-center" style="height: 400px;">
                 <i class="fas fa-image fa-5x text-muted"></i>
@@ -44,7 +44,7 @@ use Illuminate\Support\Facades\Storage;
                 <div class="col-md-4">
                     <div class="card">
                         @if($relatedProduct->image)
-                            <img src="{{ asset('storage/' . $relatedProduct->image) }}" class="card-img-top product-image" alt="{{ $relatedProduct->name }}">
+                            <img src="{{ asset('uploads/products/' . $relatedProduct->image) }}" class="card-img-top product-image" alt="{{ $relatedProduct->name }}">
                         @else
                             <div class="card-img-top product-image bg-light d-flex align-items-center justify-content-center">
                                 <i class="fas fa-image fa-3x text-muted"></i>

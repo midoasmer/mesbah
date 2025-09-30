@@ -35,7 +35,7 @@ class ProductController extends Controller
         $data = $request->all();
         
         if ($request->hasFile('image')) {
-            $data['image'] = $request->file('image')->store('products', 'public');
+            $data['image'] = $request->file('image')->move(public_path('uploads/products'), time() . '_' . $request->file('image')->getClientOriginalName())->getFilename();
         }
 
         Product::create($data);
@@ -61,10 +61,10 @@ class ProductController extends Controller
         $data = $request->all();
         
         if ($request->hasFile('image')) {
-            if ($product->image) {
-                Storage::disk('public')->delete($product->image);
+            if ($product->image && file_exists(public_path('uploads/products/' . $product->image))) {
+                unlink(public_path('uploads/products/' . $product->image));
             }
-            $data['image'] = $request->file('image')->store('products', 'public');
+            $data['image'] = $request->file('image')->move(public_path('uploads/products'), time() . '_' . $request->file('image')->getClientOriginalName())->getFilename();
         }
 
         $product->update($data);
@@ -73,8 +73,8 @@ class ProductController extends Controller
 
     public function destroy(Product $product)
     {
-        if ($product->image) {
-            Storage::disk('public')->delete($product->image);
+        if ($product->image && file_exists(public_path('uploads/products/' . $product->image))) {
+            unlink(public_path('uploads/products/' . $product->image));
         }
         $product->delete();
         return redirect()->route('admin.products.index')->with('success', 'تم حذف المنتج بنجاح');
