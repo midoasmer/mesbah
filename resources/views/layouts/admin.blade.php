@@ -44,6 +44,16 @@
                             </a>
                         </li>
                         <li class="nav-item">
+                            <a class="nav-link {{ request()->routeIs('admin.user-requests.*') ? 'active' : '' }}" href="{{ route('admin.user-requests.index') }}">
+                                <i class="fas fa-user-plus"></i> طلبات المستخدمين
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link {{ request()->routeIs('admin.profile') ? 'active' : '' }}" href="{{ route('admin.profile') }}">
+                                <i class="fas fa-user-cog"></i> الملف الشخصي
+                            </a>
+                        </li>
+                        <li class="nav-item">
                             <form action="{{ route('admin.logout') }}" method="POST">
                                 @csrf
                                 <button type="submit" class="nav-link btn btn-link" style="border: none; background: none;">

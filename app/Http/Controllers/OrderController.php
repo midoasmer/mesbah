@@ -18,7 +18,6 @@ class OrderController extends Controller
         $request->validate([
             'customer_name' => 'required|string|max:255',
             'customer_email' => 'required|email',
-            'customer_phone' => 'required|string',
             'customer_whatsapp' => 'required|string',
             'product_id' => 'required|exists:products,id',
         ]);

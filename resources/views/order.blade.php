@@ -34,15 +34,7 @@
                     </div>
                     
                     <div class="row mb-3">
-                        <div class="col-md-6">
-                            <label for="customer_phone" class="form-label">رقم الهاتف *</label>
-                            <input type="text" class="form-control @error('customer_phone') is-invalid @enderror" 
-                                   id="customer_phone" name="customer_phone" value="{{ old('customer_phone') }}" required>
-                            @error('customer_phone')
-                                <div class="invalid-feedback">{{ $message }}</div>
-                            @enderror
-                        </div>
-                        <div class="col-md-6">
+                        <div class="col-md-12">
                             <label for="customer_whatsapp" class="form-label">رقم الواتساب *</label>
                             <input type="text" class="form-control @error('customer_whatsapp') is-invalid @enderror" 
                                    id="customer_whatsapp" name="customer_whatsapp" value="{{ old('customer_whatsapp') }}" required>

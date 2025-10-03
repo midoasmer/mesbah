@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Storage;
 @section('content')
 <div class="hero-section bg-primary text-white py-5 mb-5">
     <div class="container text-center">
-        <h1 class="display-4">مرحباً بك في متجرنا الإلكتروني</h1>
+        <h1 class="display-4">مرحباً بك في مصباح</h1>
         <p class="lead">اكتشف أفضل المنتجات بأسعار منافسة</p>
     </div>
 </div>

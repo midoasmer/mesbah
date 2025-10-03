@@ -18,6 +18,7 @@
                 <table class="table table-striped">
                     <thead>
                         <tr>
+                            <th>الصورة</th>
                             <th>الاسم</th>
                             <th>الوصف</th>
                             <th>عدد المنتجات</th>
@@ -28,6 +29,13 @@
                     <tbody>
                         @foreach($categories as $category)
                             <tr>
+                                <td>
+                                    @if($category->photo)
+                                        <img src="{{ asset('uploads/categories/' . $category->photo) }}" alt="{{ $category->name }}" style="width: 50px; height: 50px; object-fit: cover;" class="img-thumbnail">
+                                    @else
+                                        <i class="fas fa-image fa-2x text-muted"></i>
+                                    @endif
+                                </td>
                                 <td>{{ $category->name }}</td>
                                 <td>{{ Str::limit($category->description, 50) }}</td>
                                 <td>{{ $category->products_count }}</td>

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@yield('title', 'متجر إلكتروني')</title>
+    <title>@yield('title', 'مصباح')</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
@@ -21,7 +21,7 @@
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
         <div class="container">
             <a class="navbar-brand" href="{{ route('home') }}">
-                <i class="fas fa-store"></i> متجر إلكتروني
+                <i class="fas fa-store"></i> مصباح
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
@@ -34,11 +34,9 @@
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('products') }}">المنتجات</a>
                     </li>
-                </ul>
-                <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link" href="/admin/login">
-                            <i class="fas fa-user-shield"></i> لوحة التحكم
+                        <a class="nav-link" href="{{ route('user-request.create') }}">
+                            <i class="fas fa-plus-circle"></i> طلب خدمة أو منتج جديد
                         </a>
                     </li>
                 </ul>
@@ -68,7 +66,7 @@
 
     <footer class="bg-dark text-light py-4 mt-5">
         <div class="container text-center">
-            <p>&copy; {{Carbon\Carbon::now()->year}} متجر إلكتروني. جميع الحقوق محفوظة.</p>
+            <p>&copy; {{Carbon\Carbon::now()->year}} مصباح. جميع الحقوق محفوظة.</p>
         </div>
     </footer>
 

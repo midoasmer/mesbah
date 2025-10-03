@@ -11,7 +11,7 @@
                 <h5>إضافة فئة جديدة</h5>
             </div>
             <div class="card-body">
-                <form action="{{ route('admin.categories.store') }}" method="POST">
+                <form action="{{ route('admin.categories.store') }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     
                     <div class="mb-3">
@@ -28,6 +28,15 @@
                         <textarea class="form-control @error('description') is-invalid @enderror" 
                                   id="description" name="description" rows="4">{{ old('description') }}</textarea>
                         @error('description')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label for="photo" class="form-label">صورة الفئة</label>
+                        <input type="file" class="form-control @error('photo') is-invalid @enderror" 
+                               id="photo" name="photo" accept="image/*">
+                        @error('photo')
                             <div class="invalid-feedback">{{ $message }}</div>
                         @enderror
                     </div>

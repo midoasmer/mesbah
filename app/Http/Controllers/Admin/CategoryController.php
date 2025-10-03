@@ -24,9 +24,19 @@ class CategoryController extends Controller
         $request->validate([
             'name' => 'required|string|max:255',
             'description' => 'nullable|string',
+            'photo' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
 
-        Category::create($request->all());
+        $data = $request->all();
+        
+        if ($request->hasFile('photo')) {
+            $photo = $request->file('photo');
+            $photoName = time() . '.' . $photo->getClientOriginalExtension();
+            $photo->move(public_path('uploads/categories'), $photoName);
+            $data['photo'] = $photoName;
+        }
+
+        Category::create($data);
         return redirect()->route('admin.categories.index')->with('success', 'تم إضافة الفئة بنجاح');
     }
 
@@ -40,9 +50,24 @@ class CategoryController extends Controller
         $request->validate([
             'name' => 'required|string|max:255',
             'description' => 'nullable|string',
+            'photo' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
 
-        $category->update($request->all());
+        $data = $request->all();
+        
+        if ($request->hasFile('photo')) {
+            // حذف الصورة القديمة إذا كانت موجودة
+            if ($category->photo && file_exists(public_path('uploads/categories/' . $category->photo))) {
+                unlink(public_path('uploads/categories/' . $category->photo));
+            }
+            
+            $photo = $request->file('photo');
+            $photoName = time() . '.' . $photo->getClientOriginalExtension();
+            $photo->move(public_path('uploads/categories'), $photoName);
+            $data['photo'] = $photoName;
+        }
+
+        $category->update($data);
         return redirect()->route('admin.categories.index')->with('success', 'تم تحديث الفئة بنجاح');
     }
 
