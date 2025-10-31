@@ -56,4 +56,11 @@ class HomeController extends Controller
     {
         return view('product', compact('product'));
     }
+
+    public function success(Request $request)
+    {
+        $title = session('success_title') ?: ($request->query('title') ?: 'Your order is successfully placed');
+        $body = session('success_body') ?: ($request->query('body') ?: 'We have received your submission and will contact you shortly.');
+        return view('order-success', compact('title', 'body'));
+    }
 }

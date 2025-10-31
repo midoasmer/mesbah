@@ -24,7 +24,10 @@ class UserRequestController extends Controller
         ]);
 
         UserRequest::create($request->all());
-        
-        return redirect()->route('home')->with('success', 'تم إرسال طلبك بنجاح! سنراجع طلبك ونوافيك بالنتيجة قريباً.');
+
+        return redirect()
+            ->route('success')
+            ->with('success_title', 'تم إرسال طلبك بنجاح')
+            ->with('success_body', 'سنراجع طلبك ونوافيك بالنتيجة قريباً.');
     }
 }

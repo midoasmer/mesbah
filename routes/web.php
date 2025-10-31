@@ -16,6 +16,7 @@ use App\Http\Controllers\Admin\UserRequestController as AdminUserRequestControll
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/products', [HomeController::class, 'products'])->name('products');
 Route::get('/product/{product}', [HomeController::class, 'product'])->name('product');
+Route::get('/success', [HomeController::class, 'success'])->name('success');
 Route::get('/order/{product}', [OrderController::class, 'create'])->name('order.create');
 Route::post('/order', [OrderController::class, 'store'])->name('order.store');
 Route::get('/request', [UserRequestController::class, 'create'])->name('user-request.create');

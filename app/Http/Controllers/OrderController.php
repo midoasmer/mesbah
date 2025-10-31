@@ -23,7 +23,10 @@ class OrderController extends Controller
         ]);
 
         Order::create($request->all());
-        
-        return redirect()->route('home')->with('success', 'تم إرسال طلبك بنجاح! سنتواصل معك قريباً.');
+
+        return redirect()
+            ->route('success')
+            ->with('success_title', 'تم إرسال طلبك بنجاح')
+            ->with('success_body', 'استلمنا طلبك وسنتواصل معك في أقرب وقت.');
     }
 }
